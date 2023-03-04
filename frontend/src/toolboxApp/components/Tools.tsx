@@ -24,7 +24,7 @@ const TOOLS = [
 const Tools: React.FC = () => {
   return (
     <>
-      <h2 className="text-[24px] font-[500] text-center mt-[50px]">Tools</h2>
+      <h2 className="text-[32px] font-[500] text-center mt-[50px]">Tools</h2>
       <ul className="flex justify-center mt-[50px] gap-[20px] flex-wrap">
         {TOOLS.map(({ name, icon, path }) => (
           <ToolsElement name={name} icon={icon} path={path} key={name} />
