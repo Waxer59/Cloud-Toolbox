@@ -47,7 +47,8 @@ const BackgroundRemove: React.FC = () => {
     let interval: number
     if (isLoading) {
       interval = setInterval(() => {
-        setTries((prevTries) => prevTries + 1) // utilizando la función de actualización del estado
+        console.log('fetching')
+        setTries((prevTries) => prevTries + 1)
       }, 500)
     }
     return () => clearInterval(interval)
