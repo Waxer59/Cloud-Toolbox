@@ -23,7 +23,8 @@ module.exports = {
     '@typescript-eslint/no-misused-promises': 'off',
     '@typescript-eslint/strict-boolean-expressions': 'off',
     'no-useless-escape': 'off',
-    '@typescript-eslint/naming-convention': 'off'
+    '@typescript-eslint/naming-convention': 'off',
+    '@typescript-eslint/no-confusing-void-expression': 'off'
   },
   settings: {
     react: {

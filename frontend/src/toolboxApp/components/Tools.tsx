@@ -1,6 +1,7 @@
 import { ImPriceTags } from 'react-icons/im'
 import { RiScreenshot2Fill } from 'react-icons/ri'
 import { CiSquareRemove } from 'react-icons/ci'
+import { BsVirus } from 'react-icons/bs'
 import ToolsElement from './ToolsElement'
 
 const TOOLS = [
@@ -18,6 +19,11 @@ const TOOLS = [
     name: 'Background remove',
     icon: <CiSquareRemove />,
     path: '/backgroundremove'
+  },
+  {
+    name: 'Is this file safe?',
+    icon: <BsVirus />,
+    path: '/isvirus'
   }
 ]
 

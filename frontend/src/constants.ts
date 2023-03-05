@@ -5,7 +5,6 @@ export const ACCEPTED_FILE_FORMATS = [
   '.bmp',
   '.tiff',
   '.ico',
-  '.pdf',
   '.eps',
   '.psd',
   '.svg',

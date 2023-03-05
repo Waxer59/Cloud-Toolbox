@@ -46,4 +46,40 @@ export class ImageController {
     }
     return this.imageService.webshot(url);
   }
+
+  @Post('bgremove')
+  @ApiProperty()
+  @ApiResponse({
+    status: 201,
+    description: 'Background removed!',
+  })
+  @UseInterceptors(
+    FileInterceptor('file', {
+      fileFilter,
+    }),
+  )
+  backgroundRemove(@UploadedFile() file: Express.Multer.File) {
+    if (!file) {
+      throw new BadRequestException('Make sure that the file is an image');
+    }
+    return this.imageService.removeImageBackground(file);
+  }
+
+  @Post('filescan')
+  @ApiProperty()
+  @ApiResponse({
+    status: 201,
+    description: 'File scanned!',
+  })
+  @UseInterceptors(
+    FileInterceptor('file', {
+      fileFilter,
+    }),
+  )
+  fileScan(@UploadedFile() file: Express.Multer.File) {
+    if (!file) {
+      throw new BadRequestException('Make sure that the file is an image');
+    }
+    return this.imageService.fileScan(file);
+  }
 }

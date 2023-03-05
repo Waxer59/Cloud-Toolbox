@@ -30,6 +30,7 @@ yarn dev
 - [Canvas conffeti](https://github.com/catdad/canvas-confetti#readme)
 - [React spinners](https://www.davidhu.io/react-spinners/)
 - [SweetAlert2](https://sweetalert2.github.io/)
+- [Two up](https://github.com/GoogleChromeLabs/two-up#readme)
 
 ### Backend
 

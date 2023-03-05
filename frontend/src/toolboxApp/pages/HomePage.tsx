@@ -1,7 +1,7 @@
 import { Footer, Navbar } from '../../ui'
 import Tools from '../components/Tools'
 
-const Home: React.FC = () => {
+const HomePage: React.FC = () => {
   return (
     <>
       <Navbar />
@@ -11,4 +11,4 @@ const Home: React.FC = () => {
   )
 }
 
-export default Home
+export default HomePage

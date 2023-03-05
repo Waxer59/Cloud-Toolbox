@@ -28,7 +28,7 @@ const THEMES: IThemes = {
 const Navbar: React.FC = () => {
   const { setLocalStorageItem, getLocalStorageItem } = useLocalStorage()
   const [theme, setTheme] = useState<any>(
-    THEMES[getLocalStorageItem(LocalStorageItems.theme)] ?? THEMES.light
+    THEMES[getLocalStorageItem(LocalStorageItems.theme)] ?? THEMES.dark
   )
 
   const onToggleThemeClick = () => {
@@ -48,7 +48,7 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className="mt-[20px] flex justify-between">
-      <h1>
+      <h1 className="transition-transform duration-500 ease hover:scale-125">
         <Link to="/">
           Cloud<strong>Toolbox</strong>
         </Link>

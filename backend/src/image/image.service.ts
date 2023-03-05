@@ -39,6 +39,31 @@ export class ImageService {
     return image;
   }
 
+  async removeImageBackground(file: Express.Multer.File) {
+    const uploadImage = await this.uploadImage(file);
+    const modifiedImage = cloudinary.url(uploadImage.public_id, {
+      transformation: [{ effect: 'background_removal' }],
+    });
+    return {
+      url: modifiedImage,
+    };
+  }
+
+  async fileScan(file: Express.Multer.File) {
+    const scan = await this.uploadImage(file, {
+      moderation: 'perception_point',
+      notification_url: `${this.configService.get(
+        'STATIC_URL',
+      )}/scanNotification`,
+    });
+
+    return scan;
+  }
+
+  scanNotification(body) {
+    console.log(body);
+  }
+
   base64_image(file: Express.Multer.File): string {
     const mimetype = file.mimetype;
     const base64 = file.buffer.toString('base64');

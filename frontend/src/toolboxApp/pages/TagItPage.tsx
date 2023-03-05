@@ -1,7 +1,7 @@
 import { Footer, Navbar } from '../../ui'
 import Tag from '../components/Tag'
 
-const TagIt: React.FC = () => {
+const TagItPage: React.FC = () => {
   return (
     <>
       <Navbar />
@@ -11,4 +11,4 @@ const TagIt: React.FC = () => {
   )
 }
 
-export default TagIt
+export default TagItPage

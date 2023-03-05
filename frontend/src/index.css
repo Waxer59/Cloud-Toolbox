@@ -9,7 +9,7 @@
   }
   html:root {
     --primary-color: #b4b3b3;
-    --secondary-color: #f8f7f7;
+    --secondary-color: #d6d6d6;
   }
   html {
     font-family: 'Poppins', sans-serif, Arial, Helvetica;
@@ -55,4 +55,16 @@
     background: #696969;
     border-radius: 24px;
   }
+}
+
+.gutter {
+  background-color: var(--secondary-color);
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
+
+.gutter.gutter-horizontal {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==');
+  cursor: col-resize;
+  height: 100%;
 }

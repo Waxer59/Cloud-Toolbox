@@ -7,17 +7,13 @@ import TagItem from './TagItem'
 import { fetchApi } from '../../api/fetchApi'
 import { PuffLoader } from 'react-spinners'
 import { useSweetAlert } from '../../hooks/useSweetAlert'
+import confetti from 'canvas-confetti'
 
 const Tag: React.FC = () => {
   const [image, setImage] = useState<any[]>([])
   const [tags, setTags] = useState([])
-  const [isTagging, setIsTagging] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const { throwToast } = useSweetAlert()
-
-  const removeAll = (): void => {
-    setImage([])
-  }
-
   const onDrop = useCallback((acceptedFiles: any) => {
     setImage(
       acceptedFiles.map((file: any) =>
@@ -27,7 +23,6 @@ const Tag: React.FC = () => {
       )
     )
   }, [])
-
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     maxFiles: 1,
@@ -36,6 +31,10 @@ const Tag: React.FC = () => {
     }
   })
 
+  const removeAll = (): void => {
+    setImage([])
+  }
+
   const onTagClick = async () => {
     if (!image[0]) {
       await throwToast('error', 'You have to put a picture to tag it!')
@@ -43,12 +42,13 @@ const Tag: React.FC = () => {
     }
     const formData = new FormData()
     formData.append('file', image[0])
-    setIsTagging(true)
+    setIsLoading(true)
     const tagsResponse = await fetchApi('/image/tag', {
       method: 'POST',
       body: formData
     })
-    setIsTagging(false)
+    setIsLoading(false)
+    confetti()
     setTags(tagsResponse.tags)
   }
 
@@ -99,7 +99,7 @@ const Tag: React.FC = () => {
             </button>
             <button
               onClick={onTagClick}
-              disabled={isTagging}
+              disabled={isLoading}
               className="dark:bg-[#1f1f1f] dark:border-0 self-center p-[10px] bg-zinc-300 rounded shadow-xl border border-solid border-neutral-400">
               Tag it!
             </button>
@@ -116,7 +116,7 @@ const Tag: React.FC = () => {
           </div>
           <ul className="mt-[25px] flex flex-wrap gap-[10px] justify-center max-h-[500px] overflow-auto">
             {tags.length <= 0 ? (
-              isTagging ? (
+              isLoading ? (
                 <PuffLoader className="mt-[150px]" />
               ) : (
                 <p className="mt-[25px] text-[18px]">Nothing to show</p>
