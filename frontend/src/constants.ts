@@ -11,5 +11,6 @@ export const ACCEPTED_FILE_FORMATS = [
   '.svg',
   '.webp',
   '.jxr',
-  '.wdp'
+  '.wdp',
+  '.jpeg'
 ]

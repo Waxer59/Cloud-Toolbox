@@ -17,11 +17,11 @@ interface IThemes {
 const THEMES: IThemes = {
   dark: {
     name: 'dark',
-    icon: <HiMoon />
+    icon: <HiMoon className="w-[24px] h-[24px]" />
   },
   light: {
     name: 'light',
-    icon: <HiSun />
+    icon: <HiSun className="w-[24px] h-[24px]" />
   }
 }
 
