@@ -47,7 +47,6 @@ const BackgroundRemove: React.FC = () => {
     let interval: number
     if (isLoading) {
       interval = setInterval(() => {
-        console.log('fetching')
         setTries((prevTries) => prevTries + 1)
       }, 500)
     }
@@ -123,13 +122,13 @@ const BackgroundRemove: React.FC = () => {
       </div>
       {bgRemovedImage !== null && (
         <div
-          className={`flex flex-col gap-[25px] ${
+          className={`flex flex-col gap-[25px] mx-auto ${
             isLoading ? 'hidden' : 'block'
           }`}>
-          <two-up className="w-full">
-            <img className="w-full" src={image[0]?.preview} />
+          <two-up className="w-[500px]">
+            <img className="w-[500px]" src={image[0]?.preview} />
             <img
-              className="w-full"
+              className="w-[500px]"
               src={`${bgRemovedImage}?t=${tries}`}
               onLoad={async () => {
                 setIsLoading(false)
