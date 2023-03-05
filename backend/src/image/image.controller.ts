@@ -1,5 +1,6 @@
 import {
   BadRequestException,
+  Body,
   Controller,
   Post,
   Query,
@@ -81,5 +82,15 @@ export class ImageController {
       throw new BadRequestException('Make sure that the file is an image');
     }
     return this.imageService.fileScan(file);
+  }
+
+  @Post('scanNotification')
+  @ApiProperty()
+  @ApiResponse({
+    status: 201,
+    description: 'Cloudinary scan notification!',
+  })
+  notification(@Body() body) {
+    return this.imageService.scanNotification(body);
   }
 }
