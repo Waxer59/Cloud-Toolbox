@@ -54,7 +54,7 @@ export class ImageService {
       moderation: 'perception_point',
       notification_url: `${this.configService.get(
         'STATIC_URL',
-      )}/scanNotification`,
+      )}/api/image/scanNotification`,
     });
 
     return scan;

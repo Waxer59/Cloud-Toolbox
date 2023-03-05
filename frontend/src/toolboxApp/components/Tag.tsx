@@ -48,7 +48,7 @@ const Tag: React.FC = () => {
       body: formData
     })
     setIsLoading(false)
-    confetti()
+    await confetti()
     setTags(tagsResponse.tags)
   }
 

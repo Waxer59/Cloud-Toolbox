@@ -28,7 +28,7 @@ const Webshot = () => {
     linkRef.current.href = URL.createObjectURL(imageBlob)
     setImgSrc(secure_url)
     setIsLoading(false)
-    confetti()
+    await confetti()
   }
   return (
     <div className="flex flex-col justify-center mt-[50px] gap-[50px]">
