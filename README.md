@@ -22,8 +22,16 @@ yarn dev
 
 ## Technologies used
 
+### Frontend
+
 - [React router dom](https://reactrouter.com/en/main)
 - [React icons](https://react-icons.github.io/react-icons)
 - [React dropzone](https://react-dropzone.js.org/)
-- [Cloudinary](https://cloudinary.com/)
 - [Canvas conffeti](https://github.com/catdad/canvas-confetti#readme)
+- [React spinners](https://www.davidhu.io/react-spinners/)
+- [SweetAlert2](https://sweetalert2.github.io/)
+
+### Backend
+
+- [Nestjs](https://nestjs.com/)
+- [Cloudinary](https://cloudinary.com/)

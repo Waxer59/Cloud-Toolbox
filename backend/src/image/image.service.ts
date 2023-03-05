@@ -34,6 +34,11 @@ export class ImageService {
     return imageResponse as unknown as ICloudinaryUploadResponse;
   }
 
+  async webshot(url: string) {
+    const image = await cloudinary.uploader.explicit(url, { type: 'url2png' });
+    return image;
+  }
+
   base64_image(file: Express.Multer.File): string {
     const mimetype = file.mimetype;
     const base64 = file.buffer.toString('base64');

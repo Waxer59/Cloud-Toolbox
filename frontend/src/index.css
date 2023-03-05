@@ -3,11 +3,56 @@
 @tailwind utilities;
 
 @layer base {
+  html.dark:root {
+    --primary-color: #f2f2f2;
+    --secondary-color: #2e2e2e;
+  }
+  html:root {
+    --primary-color: #b4b3b3;
+    --secondary-color: #f8f7f7;
+  }
   html {
     font-family: 'Poppins', sans-serif, Arial, Helvetica;
     height: 100%;
   }
   body {
     height: 100%;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #bdbdbd;
+  }
+
+  .alerts {
+    font-family: 'Poppins', sans-serif, Arial, Helvetica !important;
+    border-radius: 5px !important;
+    color: var(--primary-color) !important;
+    background: var(--secondary-color) !important;
+    margin-top: 10px;
+  }
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 4px;
+    border-radius: 24px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 24px;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #bdbdbd;
+    border-radius: 24px;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #696969;
+    border-radius: 24px;
   }
 }

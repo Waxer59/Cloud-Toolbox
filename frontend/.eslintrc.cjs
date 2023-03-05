@@ -19,7 +19,11 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     '@typescript-eslint/triple-slash-reference': 'off',
     'react/prop-types': 'off',
-    "@typescript-eslint/restrict-template-expressions": "off"
+    '@typescript-eslint/restrict-template-expressions': 'off',
+    '@typescript-eslint/no-misused-promises': 'off',
+    '@typescript-eslint/strict-boolean-expressions': 'off',
+    'no-useless-escape': 'off',
+    '@typescript-eslint/naming-convention': 'off'
   },
   settings: {
     react: {
