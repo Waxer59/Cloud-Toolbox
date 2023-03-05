@@ -47,11 +47,11 @@ const BackgroundRemove: React.FC = () => {
     let interval: number
     if (isLoading) {
       interval = setInterval(() => {
-        setTries(tries + 1)
+        setTries((prevTries) => prevTries + 1) // utilizando la función de actualización del estado
       }, 500)
     }
     return () => clearInterval(interval)
-  }, [bgRemovedImage])
+  }, [isLoading, bgRemovedImage, tries])
 
   const onBackgroundRemoveClick = async () => {
     if (!image[0]) {
@@ -68,7 +68,6 @@ const BackgroundRemove: React.FC = () => {
       method: 'POST',
       body: formData
     })
-    console.log(url)
     setBgRemovedImage(url)
   }
 
@@ -121,16 +120,16 @@ const BackgroundRemove: React.FC = () => {
           </button>
         </div>
       </div>
-      {bgRemovedImage !== null && !isLoading && (
-        <div className="flex flex-col gap-[25px]">
+      {bgRemovedImage !== null && (
+        <div
+          className={`flex flex-col gap-[25px] ${
+            isLoading ? 'hidden' : 'block'
+          }`}>
           <two-up className="w-full">
             <img className="w-full" src={image[0]?.preview} />
             <img
               className="w-full"
-              src={bgRemovedImage}
-              onError={() => {
-                setBgRemovedImage(`${bgRemovedImage}?t=${tries}`)
-              }}
+              src={`${bgRemovedImage}?t=${tries}`}
               onLoad={async () => {
                 setIsLoading(false)
                 const imageBlob = await (
