@@ -81,7 +81,7 @@ const IsVirus: React.FC = () => {
         <div className={`${isLoading ? 'hidden' : 'block'}`}>
           <div
             {...getRootProps()}
-            className={`h-[550px] w-full max-w-[950px] m-auto border border-solid ${
+            className={`h-[550px] border-dashed w-full max-w-[950px] m-auto border border-solid ${
               isDragActive ? 'border-green-600' : 'border-neutral-400'
             } duration-500 ease rounded shadow-xl cursor-pointer flex items-center justify-center bg-no-repeat bg-contain bg-center transition-all`}
             style={{

@@ -72,7 +72,7 @@ const BackgroundRemove: React.FC = () => {
   }
 
   return (
-    <div className="mt-[25px] flex flex-col gap-[25px]">
+    <div className="mt-[25px] flex flex-col gap-[25px] mb-[50px]">
       <header className="flex justify-center flex-col gap-[15px]">
         <h3 className="text-[24px] font-[500] text-center mt-[50px]">
           Background remove
@@ -87,7 +87,7 @@ const BackgroundRemove: React.FC = () => {
         }`}>
         <div
           {...getRootProps()}
-          className={`h-[550px] w-full max-w-[950px] m-auto border border-solid ${
+          className={`h-[550px] border-dashed w-full max-w-[950px] m-auto border border-solid ${
             isDragActive ? 'border-green-600' : 'border-neutral-400'
           } duration-500 ease rounded shadow-xl cursor-pointer flex items-center justify-center bg-no-repeat bg-contain bg-center transition-all`}
           style={{

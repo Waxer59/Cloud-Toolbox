@@ -3,11 +3,11 @@ import { FaGithub } from 'react-icons/fa'
 const Footer: React.FC = () => {
   return (
     <footer className="flex items-center gap-[5px] justify-center mt-auto p-[20px]">
-      Made by{' '}
+      Made by&nbsp;
       <a href="https://github.com/Waxer59" target="_blank" rel="noreferrer">
         <FaGithub />
-      </a>{' '}
-      with{' '}
+      </a>
+      &nbsp; with&nbsp;
       <a href="https://cloudinary.com/" target="_blank" rel="noreferrer">
         <svg
           width="20px"

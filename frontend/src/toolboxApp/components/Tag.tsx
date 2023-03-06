@@ -71,7 +71,7 @@ const Tag: React.FC = () => {
         <div className="flex flex-col w-full sm:w-1/2">
           <div
             {...getRootProps()}
-            className={`h-[450px] w-full border border-solid ${
+            className={`h-[450px] border-dashed w-full border border-solid ${
               isDragActive ? 'border-green-600' : 'border-neutral-400'
             } duration-500 ease rounded shadow-xl cursor-pointer flex items-center justify-center bg-no-repeat bg-contain bg-center transition-all`}
             style={{
@@ -105,7 +105,7 @@ const Tag: React.FC = () => {
             </button>
           </div>
         </div>
-        <div className="w-full sm:w-1/2">
+        <div className="w-full sm:w-1/2 min-h-[500px]">
           <div className="flex justify-center gap-[10px]">
             <h3 className="text-[24px]">Tags</h3>
             {tags.length > 0 && (
