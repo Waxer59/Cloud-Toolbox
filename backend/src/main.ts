@@ -11,7 +11,9 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('Images Api')
-    .setDescription('The images API')
+    .setDescription(
+      'This api communicates with cloudinary to do image management and manipulation',
+    )
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, config);

@@ -1,24 +1,16 @@
 # Cloud Toolbox
 
-Cloud toolbox is a page that groups several tools such as: background removal, tagging images, taking screenshots to a website.
+Cloud toolbox is a page that groups several tools such as: **background removal**, **tagging** images, taking **screenshots** to a **website** or **scan** whether a document is secure.
 
 This project is part of a hackathon organized by [cloudinary](https://cloudinary.com/) in collaboration with the streamer [midudev](https://github.com/midudev).
 
 ## How to run the proyect
 
-1. fill in all the fields of the `.template.env` file and rename it to `.env`.
+1. Install the project dependencies by first running the `yarn` command in the project root directory and then install the backend and frontend dependencies by running the `yarn deps` command.
 
-2. Install all project dependencies with the command:
+2. fill in all the fields of the `.template.env` file and rename it to `.env` in the directory `/backend` and `/frontend`..
 
-```
-yarn
-```
-
-3. Start the project with the command:
-
-```
-yarn dev
-```
+> All backend paths are documented with swagger in the backend path `/api`.
 
 ## Technologies used
 
@@ -35,4 +27,5 @@ yarn dev
 ### Backend
 
 - [Nestjs](https://nestjs.com/)
+- [Swagger](https://swagger.io/)
 - [Cloudinary](https://cloudinary.com/)

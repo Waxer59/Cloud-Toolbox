@@ -6,6 +6,7 @@ import { PuffLoader } from 'react-spinners'
 import { AiFillSecurityScan } from 'react-icons/ai'
 import { BiImageAdd } from 'react-icons/bi'
 import { fetchApi } from '../../api/fetchApi'
+import confetti from 'canvas-confetti'
 
 const IsVirus: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false)
@@ -59,6 +60,7 @@ const IsVirus: React.FC = () => {
       setIsLoading(response?.status === 'pending')
       if (response?.status !== 'pending') {
         setResult(response.moderation_status)
+        await confetti()
         clearInterval(checkScanStatus)
       }
     }, 3000)
@@ -67,7 +69,7 @@ const IsVirus: React.FC = () => {
   return (
     <>
       <div
-        className={`mt-[25px] flex flex-col gap-[25px] ${
+        className={`mt-[25px] mb-[50px] flex flex-col gap-[25px] ${
           result ? 'hidden' : 'block'
         }`}>
         <header className="flex justify-center flex-col gap-[15px]">
@@ -109,7 +111,7 @@ const IsVirus: React.FC = () => {
             </button>
             <button
               onClick={onScanFileClick}
-              className="flex items-center gap-[5px] dark:bg-[#1f1f1f] dark:border-0 self-center p-[10px] bg-zinc-300 rounded shadow-xl border border-solid border-neutral-400">
+              className="flex flex-wrap justify-center items-center gap-[5px] dark:bg-[#1f1f1f] dark:border-0 self-center p-[10px] bg-zinc-300 rounded shadow-xl border border-solid border-neutral-400">
               <AiFillSecurityScan />
               Scan the file
             </button>

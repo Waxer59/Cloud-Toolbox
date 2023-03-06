@@ -53,7 +53,11 @@ const Navbar: React.FC = () => {
           Cloud<strong>Toolbox</strong>
         </Link>
       </h1>
-      <button onClick={onToggleThemeClick}>{theme.icon}</button>
+      <button
+        className="hover:opacity-75 transition-all ease duratin-500"
+        onClick={onToggleThemeClick}>
+        {theme.icon}
+      </button>
     </nav>
   )
 }

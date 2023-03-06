@@ -11,29 +11,22 @@ import {
 import { FileInterceptor } from '@nestjs/platform-express';
 import { ImageService } from './image.service';
 import { fileFilter } from './helpers/fileFilter.helper';
-import { ApiProperty, ApiResponse } from '@nestjs/swagger';
+import { ApiProperty, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Get } from '@nestjs/common';
 
 @Controller('image')
+@ApiTags('Image')
 export class ImageController {
   constructor(private readonly imageService: ImageService) {}
 
-  @Post('tag')
+  @Get('filescan/:id')
   @ApiProperty()
   @ApiResponse({
     status: 201,
-    description: 'Tags created!',
+    description: 'File results',
   })
-  @UseInterceptors(
-    FileInterceptor('file', {
-      fileFilter,
-    }),
-  )
-  tag(@UploadedFile() file: Express.Multer.File) {
-    if (!file) {
-      throw new BadRequestException('Make sure that the file is an image');
-    }
-    return this.imageService.tag(file);
+  fileResults(@Param('id') id: string) {
+    return this.imageService.fileResults(id);
   }
 
   @Get('webshot')
@@ -85,18 +78,28 @@ export class ImageController {
     return this.imageService.fileScan(file);
   }
 
-  @Get('filescan/:id')
+  @Post('tag')
   @ApiProperty()
   @ApiResponse({
     status: 201,
-    description: 'File results',
+    description: 'Tags created!',
   })
-  fileResults(@Param('id') id: string) {
-    return this.imageService.fileResults(id);
+  @UseInterceptors(
+    FileInterceptor('file', {
+      fileFilter,
+    }),
+  )
+  tag(@UploadedFile() file: Express.Multer.File) {
+    if (!file) {
+      throw new BadRequestException('Make sure that the file is an image');
+    }
+    return this.imageService.tag(file);
   }
 
   @Post('scanNotification')
-  @ApiProperty()
+  @ApiProperty({
+    name: 'Cloudinary scan notification',
+  })
   @ApiResponse({
     status: 201,
     description: 'Cloudinary scan notification!',
