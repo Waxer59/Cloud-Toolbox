@@ -1,16 +1,18 @@
+import { useState, useCallback } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { ACCEPTED_FILE_FORMATS } from '../../constants'
-import { useState, useCallback } from 'react'
 import { useSweetAlert } from '../../hooks/useSweetAlert'
 import { PuffLoader } from 'react-spinners'
 import { AiFillSecurityScan } from 'react-icons/ai'
 import { BiImageAdd } from 'react-icons/bi'
+import { fetchApi } from '../../api/fetchApi'
 
 const IsVirus: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false)
-  const [result, setResult] = useState('')
+  const [result, setResult] = useState<any>()
   const [image, setImage] = useState<any[]>([])
   const { throwToast } = useSweetAlert()
+  let checkScanStatus: number
 
   const removeAll = (): void => {
     setImage([])
@@ -25,6 +27,12 @@ const IsVirus: React.FC = () => {
       )
     )
   }, [])
+
+  const reset = () => {
+    setImage([])
+    setResult(null)
+  }
+
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     maxFiles: 1,
@@ -38,10 +46,31 @@ const IsVirus: React.FC = () => {
       await throwToast('error', 'You have to put a file to scan!')
       return
     }
+    const formData = new FormData()
+    formData.append('file', image[0])
+    setIsLoading(true)
+    const { asset_id } = await fetchApi('/image/filescan', {
+      method: 'POST',
+      body: formData
+    })
+
+    checkScanStatus = setInterval(async () => {
+      const response = await fetchApi(`/image/filescan/${asset_id}`)
+      setIsLoading(response?.status === 'pending')
+      console.log(response)
+      if (response?.status !== 'pending') {
+        setResult(response.moderation_status)
+        clearInterval(checkScanStatus)
+      }
+    }, 1000)
   }
+
   return (
     <>
-      {/* <div className="mt-[25px] flex flex-col gap-[25px]">
+      <div
+        className={`mt-[25px] flex flex-col gap-[25px] ${
+          result ? 'hidden' : 'block'
+        }`}>
         <header className="flex justify-center flex-col gap-[15px]">
           <h3 className="text-[24px] font-[500] text-center mt-[50px]">
             Scan the file
@@ -87,7 +116,20 @@ const IsVirus: React.FC = () => {
             </button>
           </div>
         </div>
-      </div> */}
+      </div>
+      <div
+        className={`${
+          result ? 'block' : 'hidden'
+        } flex flex-col justify-center items-center align-center gap-[15px] h-[500px]`}>
+        <h3 className="text-[28px] font-[500] text-center mt-[50px]">
+          File Results: {result.charAt(0).toUpperCase() + result.slice(1)}
+        </h3>
+        <button
+          onClick={reset}
+          className="flex items-center gap-[5px] dark:bg-[#1f1f1f] dark:border-0 self-center p-[10px] bg-zinc-300 rounded shadow-xl border border-solid border-neutral-400">
+          Try again!
+        </button>
+      </div>
       {isLoading && <PuffLoader className="mt-[150px] m-auto" />}
     </>
   )

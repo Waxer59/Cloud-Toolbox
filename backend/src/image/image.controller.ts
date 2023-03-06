@@ -2,6 +2,7 @@ import {
   BadRequestException,
   Body,
   Controller,
+  Param,
   Post,
   Query,
   UploadedFile,
@@ -82,6 +83,16 @@ export class ImageController {
       throw new BadRequestException('Make sure that the file is an image');
     }
     return this.imageService.fileScan(file);
+  }
+
+  @Get('filescan/:id')
+  @ApiProperty()
+  @ApiResponse({
+    status: 201,
+    description: 'File results',
+  })
+  fileResults(@Param('id') id: string) {
+    return this.imageService.fileResults(id);
   }
 
   @Post('scanNotification')

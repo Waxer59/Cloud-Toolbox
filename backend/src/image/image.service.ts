@@ -5,6 +5,8 @@ import { ICloudinaryUploadResponse } from '../common/interfaces/uploadImage.inte
 
 @Injectable()
 export class ImageService {
+  private listeners = {};
+
   constructor(private readonly configService: ConfigService) {
     cloudinary.config({
       cloud_name: this.configService.get('CLOUDINARY_CLOUD_NAME'),
@@ -60,8 +62,25 @@ export class ImageService {
     return scan;
   }
 
+  fileResults(id: string) {
+    if (this.listeners[id]) {
+      const data = { ...this.listeners[id] };
+      this.unRegisterListener(id);
+      return data;
+    }
+    return { status: 'pending' };
+  }
+
+  registerListener(id: string, listener: any) {
+    this.listeners[id] = listener;
+  }
+
+  unRegisterListener(id: string) {
+    return delete this.listeners[id];
+  }
+
   scanNotification(body) {
-    console.log(body);
+    return this.registerListener(body.asset_id, body);
   }
 
   base64_image(file: Express.Multer.File): string {
