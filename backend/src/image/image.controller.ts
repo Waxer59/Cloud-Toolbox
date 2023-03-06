@@ -102,6 +102,8 @@ export class ImageController {
     description: 'Cloudinary scan notification!',
   })
   notification(@Body() body) {
-    return this.imageService.scanNotification(body);
+    if (body.moderation_status) {
+      return this.imageService.scanNotification(body);
+    }
   }
 }

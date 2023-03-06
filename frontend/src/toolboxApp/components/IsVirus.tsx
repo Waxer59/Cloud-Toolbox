@@ -49,16 +49,15 @@ const IsVirus: React.FC = () => {
     const formData = new FormData()
     formData.append('file', image[0])
     setIsLoading(true)
-    const { asset_id } = await fetchApi('/image/filescan', {
-      method: 'POST',
-      body: formData
-    })
+    // const { asset_id } = await fetchApi('/image/filescan', {
+    //   method: 'POST',
+    //   body: formData
+    // })
 
     checkScanStatus = setInterval(async () => {
-      const response = await fetchApi(`/image/filescan/${asset_id}`)
+      const response = await fetchApi(`/image/filescan/${'abc'}`)
       setIsLoading(response?.status === 'pending')
       if (response?.status !== 'pending') {
-        console.log(response)
         setResult(response.moderation_status)
         clearInterval(checkScanStatus)
       }
