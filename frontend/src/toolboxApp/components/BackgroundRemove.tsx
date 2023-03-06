@@ -48,7 +48,9 @@ const BackgroundRemove: React.FC = () => {
     if (isLoading) {
       interval = setInterval(() => {
         setTries((prevTries) => prevTries + 1)
-      }, 500)
+      }, 1000)
+    } else {
+      setTries(0)
     }
     return () => clearInterval(interval)
   }, [isLoading, bgRemovedImage, tries])

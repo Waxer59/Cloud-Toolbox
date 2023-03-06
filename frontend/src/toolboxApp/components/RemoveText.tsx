@@ -66,7 +66,7 @@ export const RemoveText = () => {
         }`}>
         <header className="flex justify-center flex-col gap-[15px]">
           <h3 className="text-[24px] font-[500] text-center mt-[50px]">
-            Remove text
+            Remove the text
           </h3>
           <p className="max-w-[550px] text-center m-auto text-[20px]">
             Remove text from your images!
