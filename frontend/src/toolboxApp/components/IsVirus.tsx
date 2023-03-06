@@ -122,7 +122,8 @@ const IsVirus: React.FC = () => {
           result ? 'block' : 'hidden'
         } flex flex-col justify-center items-center align-center gap-[15px] h-[500px]`}>
         <h3 className="text-[28px] font-[500] text-center mt-[50px]">
-          File Results: {result.charAt(0).toUpperCase() + result.slice(1)}
+          File Results:{' '}
+          {result && result.charAt(0).toUpperCase() + result.slice(1)}
         </h3>
         <button
           onClick={reset}
