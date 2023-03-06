@@ -1,6 +1,6 @@
 # Cloud Toolbox
 
-Cloud toolbox is a page that groups several tools such as: **background removal**, **tagging** images, taking **screenshots** to a **website** or **scan** whether a document is secure and **remove text** from an image.
+Cloud toolbox is a page that groups several tools such as: **background removal**, **tagging** images, taking **screenshots** to a **website**, **scan** whether a document is secure and **remove text** from an image.
 
 This project is part of a hackathon organized by [cloudinary](https://cloudinary.com/) in collaboration with the streamer [midudev](https://github.com/midudev).
 
