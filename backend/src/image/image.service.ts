@@ -8,6 +8,9 @@ export class ImageService {
   private listeners = {};
 
   constructor(private readonly configService: ConfigService) {
+    console.log(
+      `${this.configService.get('STATIC_URL')}/api/image/scanNotification`,
+    );
     cloudinary.config({
       cloud_name: this.configService.get('CLOUDINARY_CLOUD_NAME'),
       api_key: this.configService.get('CLOUDINARY_CLOUD_API_KEY'),
