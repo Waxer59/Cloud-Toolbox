@@ -80,6 +80,7 @@ export class ImageService {
   }
 
   scanNotification(body) {
+    console.log(body);
     return this.registerListener(body.asset_id, body);
   }
 
