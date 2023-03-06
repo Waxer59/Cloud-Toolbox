@@ -48,8 +48,8 @@ const Tag: React.FC = () => {
       body: formData
     })
     setIsLoading(false)
-    await confetti()
     setTags(tagsResponse.tags)
+    await confetti()
   }
 
   const onCopyClick = async (): Promise<void> => {
