@@ -10,7 +10,7 @@ This project is part of a hackathon organized by [cloudinary](https://cloudinary
 
 2. Fill in all the fields of the `.template.env` file and rename it to `.env` in the directory `/backend` and `/frontend`.
 
-3. Run on the root of the proyect `yarn dev`
+3. Run on the root of the proyect the command: `yarn dev`
 
 > All backend paths are documented with swagger in the backend path `/api`.
 
