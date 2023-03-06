@@ -4,7 +4,8 @@ import {
   TagItPage,
   WebShotPage,
   BackgroundRemovePage,
-  IsVirusPage
+  IsVirusPage,
+  RemoveTextPage
 } from '../toolboxApp/pages'
 
 const AppRouter: React.FC = () => {
@@ -15,6 +16,7 @@ const AppRouter: React.FC = () => {
       <Route path="/backgroundremove" element={<BackgroundRemovePage />} />
       <Route path="/tagit" element={<TagItPage />} />
       <Route path="/isvirus" element={<IsVirusPage />} />
+      <Route path="/removetext" element={<RemoveTextPage />} />
     </Routes>
   )
 }

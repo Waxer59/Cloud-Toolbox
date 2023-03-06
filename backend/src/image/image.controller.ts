@@ -97,9 +97,7 @@ export class ImageController {
   }
 
   @Post('scanNotification')
-  @ApiProperty({
-    name: 'Cloudinary scan notification',
-  })
+  @ApiProperty()
   @ApiResponse({
     status: 201,
     description: 'Cloudinary scan notification!',
@@ -108,5 +106,20 @@ export class ImageController {
     if (body.moderation_status) {
       return this.imageService.scanNotification(body);
     }
+  }
+
+  @Post('removetext')
+  @ApiProperty()
+  @ApiResponse({
+    status: 201,
+    description: 'Text removed!',
+  })
+  @UseInterceptors(
+    FileInterceptor('file', {
+      fileFilter,
+    }),
+  )
+  removeText(@UploadedFile() file: Express.Multer.File) {
+    return this.imageService.removeText(file);
   }
 }

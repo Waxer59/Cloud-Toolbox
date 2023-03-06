@@ -1,5 +1,5 @@
 import { ImPriceTags } from 'react-icons/im'
-import { RiScreenshot2Fill } from 'react-icons/ri'
+import { RiDeleteBack2Fill, RiScreenshot2Fill } from 'react-icons/ri'
 import { CiSquareRemove } from 'react-icons/ci'
 import { BsVirus } from 'react-icons/bs'
 import ToolsElement from './ToolsElement'
@@ -24,6 +24,11 @@ const TOOLS = [
     name: 'Is this file safe?',
     icon: <BsVirus />,
     path: '/isvirus'
+  },
+  {
+    name: 'Remove text',
+    icon: <RiDeleteBack2Fill />,
+    path: '/removetext'
   }
 ]
 

@@ -7,12 +7,13 @@ import confetti from 'canvas-confetti'
 
 const Webshot = () => {
   const [query, setQuery] = useState('')
-  const [imgSrc, setImgSrc] = useState()
+  const [imgSrc, setImgSrc] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
   const linkRef = useRef<any>()
   const { throwToast } = useSweetAlert()
 
   const onTakeWebshotClick = async () => {
+    setImgSrc(null)
     if (
       !query.match(
         /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/
@@ -67,9 +68,11 @@ const Webshot = () => {
           </a>
         </div>
       </div>
-      <a href={imgSrc} target="_blank" rel="noreferrer">
-        <img src={imgSrc} />
-      </a>
+      {imgSrc !== null && (
+        <a href={imgSrc} target="_blank" rel="noreferrer">
+          <img src={imgSrc} />
+        </a>
+      )}
       {isLoading && <PuffLoader className="mt-[150px] m-auto" />}
     </div>
   )

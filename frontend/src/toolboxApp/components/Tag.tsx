@@ -36,6 +36,7 @@ const Tag: React.FC = () => {
   }
 
   const onTagClick = async () => {
+    setTags([])
     if (!image[0]) {
       await throwToast('error', 'You have to put a picture to tag it!')
       return

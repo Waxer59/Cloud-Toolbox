@@ -85,6 +85,17 @@ export class ImageService {
     return this.registerListener(body.public_id, body);
   }
 
+  async removeText(file: Express.Multer.File) {
+    const image = await this.uploadImage(file, { ocr: 'adv_ocr' });
+
+    const url = cloudinary.url(image.public_id, {
+      effect: 'blur_region:800',
+      gravity: 'ocr_text',
+    });
+
+    return { url };
+  }
+
   base64_image(file: Express.Multer.File): string {
     const mimetype = file.mimetype;
     const base64 = file.buffer.toString('base64');
