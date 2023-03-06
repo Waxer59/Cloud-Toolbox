@@ -39,7 +39,6 @@ export const RemoveText = () => {
       'image/*': ACCEPTED_FILE_FORMATS
     }
   })
-
   const onRemoveTextClick = async () => {
     if (!image[0]) {
       await throwToast('error', 'You have to put a image!')
@@ -58,6 +57,7 @@ export const RemoveText = () => {
     linkRef.current.href = URL.createObjectURL(imageBlob)
     await confetti()
   }
+
   return (
     <>
       <div

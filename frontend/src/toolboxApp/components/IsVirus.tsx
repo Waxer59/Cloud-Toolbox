@@ -10,7 +10,7 @@ import confetti from 'canvas-confetti'
 
 const IsVirus: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false)
-  const [result, setResult] = useState<any>()
+  const [result, setResult] = useState<any>(null)
   const [image, setImage] = useState<any[]>([])
   const { throwToast } = useSweetAlert()
   let checkScanStatus: number
@@ -59,9 +59,10 @@ const IsVirus: React.FC = () => {
       const response = await fetchApi(`/image/filescan/${public_id}`)
       setIsLoading(response?.status === 'pending')
       if (response?.status !== 'pending') {
-        setResult(response.moderation_status)
-        await confetti()
         clearInterval(checkScanStatus)
+        setResult(response.moderation_status)
+        setIsLoading(false)
+        await confetti()
       }
     }, 3000)
   }
