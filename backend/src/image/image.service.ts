@@ -58,7 +58,6 @@ export class ImageService {
         'STATIC_URL',
       )}/api/image/scanNotification`,
     });
-
     return scan;
   }
 
@@ -80,7 +79,6 @@ export class ImageService {
   }
 
   scanNotification(body) {
-    console.log(body);
     return this.registerListener(body.asset_id, body);
   }
 

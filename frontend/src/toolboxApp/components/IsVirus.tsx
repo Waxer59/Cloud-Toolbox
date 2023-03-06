@@ -57,12 +57,11 @@ const IsVirus: React.FC = () => {
     checkScanStatus = setInterval(async () => {
       const response = await fetchApi(`/image/filescan/${asset_id}`)
       setIsLoading(response?.status === 'pending')
-      console.log(response)
       if (response?.status !== 'pending') {
         setResult(response.moderation_status)
         clearInterval(checkScanStatus)
       }
-    }, 1000)
+    }, 3000)
   }
 
   return (
