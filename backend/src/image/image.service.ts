@@ -72,15 +72,17 @@ export class ImageService {
 
   registerListener(id: string, listener: any) {
     this.listeners[id] = listener;
+    console.log(this.listeners);
   }
 
   unRegisterListener(id: string) {
+    console.log('unregistered');
     return delete this.listeners[id];
   }
 
   scanNotification(body) {
     console.log(body);
-    return this.registerListener(body.asset_id, body);
+    return this.registerListener(body.public_id, body);
   }
 
   base64_image(file: Express.Multer.File): string {
