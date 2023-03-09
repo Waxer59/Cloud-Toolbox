@@ -19,6 +19,7 @@ This project is part of a hackathon organized by [cloudinary](https://cloudinary
 ### Frontend
 
 - [React router dom](https://reactrouter.com/en/main)
+- [TypeScript](https://www.typescriptlang.org/)
 - [React icons](https://react-icons.github.io/react-icons)
 - [React dropzone](https://react-dropzone.js.org/)
 - [Canvas conffeti](https://github.com/catdad/canvas-confetti#readme)

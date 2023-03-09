@@ -96,7 +96,7 @@ export class ImageController {
     return this.imageService.tag(file);
   }
 
-  @Post('scanNotification')
+  @Post('scannotification')
   @ApiProperty()
   @ApiResponse({
     status: 201,
