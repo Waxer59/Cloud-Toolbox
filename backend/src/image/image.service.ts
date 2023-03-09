@@ -44,7 +44,7 @@ export class ImageService {
   async removeImageBackground(file: Express.Multer.File) {
     const uploadImage = await this.uploadImage(file);
     const modifiedImage = cloudinary.url(uploadImage.public_id, {
-      transformation: [{ effect: 'background_removal' }],
+      effect: 'background_removal',
     });
     return {
       url: modifiedImage,
