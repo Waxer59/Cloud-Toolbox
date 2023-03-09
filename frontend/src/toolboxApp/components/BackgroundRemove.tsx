@@ -14,6 +14,7 @@ const BackgroundRemove: React.FC = () => {
   const [bgRemovedImage, setBgRemovedImage] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(false)
   const [tries, setTries] = useState(0)
+  const interval = useRef<any>(null)
   const linkRef = useRef<any>()
   const { throwToast } = useSweetAlert()
   const onDrop = useCallback((acceptedFiles: any) => {
@@ -44,15 +45,15 @@ const BackgroundRemove: React.FC = () => {
   }
 
   useEffect(() => {
-    let interval: number
     if (isLoading) {
-      interval = setInterval(() => {
-        setTries((prevTries) => prevTries + 1)
-      }, 1000)
+      interval.current = setInterval(
+        () => setTries((prevTries) => prevTries + 1),
+        1000
+      )
     } else {
       setTries(0)
     }
-    return () => clearInterval(interval)
+    return () => clearInterval(interval.current)
   }, [isLoading, bgRemovedImage, tries])
 
   const onBackgroundRemoveClick = async () => {

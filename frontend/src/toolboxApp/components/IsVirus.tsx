@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useRef } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { ACCEPTED_FILE_FORMATS } from '../../constants'
 import { useSweetAlert } from '../../hooks/useSweetAlert'
@@ -13,7 +13,7 @@ const IsVirus: React.FC = () => {
   const [result, setResult] = useState<any>(null)
   const [image, setImage] = useState<any[]>([])
   const { throwToast } = useSweetAlert()
-  let checkScanStatus: number
+  const interval = useRef<any>(null)
 
   const removeAll = (): void => {
     setImage([])
@@ -55,11 +55,11 @@ const IsVirus: React.FC = () => {
       body: formData
     })
 
-    checkScanStatus = setInterval(async () => {
+    interval.current = setInterval(async () => {
       const response = await fetchApi(`/image/filescan/${public_id}`)
       setIsLoading(response?.status === 'pending')
       if (response?.status !== 'pending') {
-        clearInterval(checkScanStatus)
+        clearInterval(interval.current)
         setResult(response.moderation_status)
         setIsLoading(false)
         await confetti()
