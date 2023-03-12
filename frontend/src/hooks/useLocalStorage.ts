@@ -12,7 +12,12 @@ export enum LocalStorageItems {
 export const useLocalStorage = (): LocalStorageFunctions => {
   const getLocalStorageItem = (key: LocalStorageItems): any => {
     const value = localStorage.getItem(key)
-    return value !== null ? JSON.parse(value) : null
+    try {
+      const parsedValue = value !== null ? JSON.parse(value) : null
+      return parsedValue
+    } catch (e) {
+      return null
+    }
   }
   const setLocalStorageItem = (key: LocalStorageItems, value: any): void => {
     localStorage.setItem(key, JSON.stringify(value))
