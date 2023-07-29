@@ -3,13 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "workspaces": [
-    "frontend/",
-    "backend/"
+    "frontend",
+    "backend"
   ],
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
-    "deps": "turbo run deps --parallel",
     "lint": "turbo run lint",
     "format": "turbo run format --parallel",
     "prepare": "husky install"

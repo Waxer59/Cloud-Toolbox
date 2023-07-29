@@ -14,10 +14,6 @@
     },
     "dev": {
       "cache": false
-    },
-    "deps": {
-      "outputs": ["node_modules"],
-      "cache": false
     }
   }
 }
