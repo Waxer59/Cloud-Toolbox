@@ -6,7 +6,7 @@ This project is part of a hackathon organized by [cloudinary](https://cloudinary
 
 ## How to run the proyect
 
-1. Install the project dependencies by first running the `yarn` command in the project root directory and then install the backend and frontend dependencies by running the `yarn deps` command.
+1. Install the project dependencies by first running the `yarn` command in the project root directory.
 
 2. Fill in all the fields of the `.template.env` file and rename it to `.env` in the directory `/backend` and `/frontend`.
 
