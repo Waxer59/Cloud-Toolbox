@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
-import HomePage from '../toolbox/pages/HomePage'
-import ToolboxRoutes from '../toolbox/routes/ToolboxRoutes'
+import HomePage from '../cloudToolbox/pages/HomePage'
+import ToolboxRoutes from '../cloudToolbox/routes/ToolboxRoutes'
 
 const AppRouter: React.FC = () => {
   return (

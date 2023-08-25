@@ -1,3 +1,5 @@
+import { useCallback } from 'react'
+
 interface LocalStorageFunctions {
   getLocalStorageItem: (key: LocalStorageItems) => any
   setLocalStorageItem: (key: LocalStorageItems, value: any) => void
@@ -10,7 +12,7 @@ export enum LocalStorageItems {
 }
 
 export const useLocalStorage = (): LocalStorageFunctions => {
-  const getLocalStorageItem = (key: LocalStorageItems): any => {
+  const getLocalStorageItem = useCallback((key: LocalStorageItems): any => {
     const value = localStorage.getItem(key)
     try {
       const parsedValue = value !== null ? JSON.parse(value) : null
@@ -18,16 +20,23 @@ export const useLocalStorage = (): LocalStorageFunctions => {
     } catch (e) {
       return null
     }
-  }
-  const setLocalStorageItem = (key: LocalStorageItems, value: any): void => {
-    localStorage.setItem(key, JSON.stringify(value))
-  }
-  const removeLocalStorageItem = (key: string): void => {
+  }, [])
+
+  const setLocalStorageItem = useCallback(
+    (key: LocalStorageItems, value: any): void => {
+      localStorage.setItem(key, JSON.stringify(value))
+    },
+    []
+  )
+
+  const removeLocalStorageItem = useCallback((key: string): void => {
     localStorage.removeItem(key)
-  }
-  const clearLocalStorage = (): void => {
+  }, [])
+
+  const clearLocalStorage = useCallback(() => {
     localStorage.clear()
-  }
+  }, [])
+
   return {
     getLocalStorageItem,
     setLocalStorageItem,

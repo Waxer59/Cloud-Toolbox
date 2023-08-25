@@ -3,7 +3,12 @@ module.exports = {
     browser: true,
     es2021: true
   },
-  extends: ['plugin:react/recommended', 'standard-with-typescript', 'prettier'],
+  extends: [
+    'plugin:react/recommended',
+    'standard-with-typescript',
+    'plugin:react-hooks/recommended',
+    'prettier',
+  ],
   overrides: [],
   parserOptions: {
     parser: '@typescript-eslint/parser',
@@ -13,7 +18,7 @@ module.exports = {
     tsconfigRootDir: __dirname
   },
   ignorePatterns: ['vite.config.ts'],
-  plugins: ['react', 'prettier'],
+  plugins: ['react', 'react-refresh'],
   rules: {
     '@typescript-eslint/explicit-function-return-type': 'off',
     'react/react-in-jsx-scope': 'off',
@@ -25,7 +30,8 @@ module.exports = {
     'no-useless-escape': 'off',
     '@typescript-eslint/naming-convention': 'off',
     '@typescript-eslint/no-confusing-void-expression': 'off',
-    '@typescript-eslint/restrict-plus-operands': 'off'
+    '@typescript-eslint/restrict-plus-operands': 'off',
+    "react-hooks/exhaustive-deps": "off"
   },
   settings: {
     react: {
