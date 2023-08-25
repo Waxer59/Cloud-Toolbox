@@ -24,6 +24,7 @@ const Webshot = () => {
     }
 
     setIsLoading(true)
+    // eslint-disable-next-line no-use-before-define
     const { secure_url } = await fetchApi(`/image/webshot?url=${query}`)
     const imageBlob = await (await fetch(secure_url)).blob()
     linkRef.current.href = URL.createObjectURL(imageBlob)

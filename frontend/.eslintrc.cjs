@@ -7,8 +7,9 @@ module.exports = {
     'plugin:react/recommended',
     'standard-with-typescript',
     'plugin:react-hooks/recommended',
-    'prettier',
+    'prettier'
   ],
+  ignorePatterns: ['vite.config.ts', 'netlify/'],
   overrides: [],
   parserOptions: {
     parser: '@typescript-eslint/parser',
@@ -17,21 +18,24 @@ module.exports = {
     project: ['./tsconfig.json'],
     tsconfigRootDir: __dirname
   },
-  ignorePatterns: ['vite.config.ts'],
   plugins: ['react', 'react-refresh'],
   rules: {
-    '@typescript-eslint/explicit-function-return-type': 'off',
     'react/react-in-jsx-scope': 'off',
-    '@typescript-eslint/triple-slash-reference': 'off',
-    'react/prop-types': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/restrict-template-expressions': 'off',
-    '@typescript-eslint/no-misused-promises': 'off',
-    '@typescript-eslint/strict-boolean-expressions': 'off',
-    'no-useless-escape': 'off',
-    '@typescript-eslint/naming-convention': 'off',
     '@typescript-eslint/no-confusing-void-expression': 'off',
+    '@typescript-eslint/prefer-optional-chain': 'off',
+    '@typescript-eslint/no-floating-promises': 'off',
+    'react/prop-types': 'off',
     '@typescript-eslint/restrict-plus-operands': 'off',
-    "react-hooks/exhaustive-deps": "off"
+    'react/no-unescaped-entities': 'off',
+    '@typescript-eslint/triple-slash-reference': 'off',
+    '@typescript-eslint/consistent-indexed-object-style': 'off',
+    '@typescript-eslint/strict-boolean-expressions': 'off',
+    'react-hooks/exhaustive-deps': 'off',
+    "no-useless-escape": "off",
+    "@typescript-eslint/naming-convention": "off",
+    "@typescript-eslint/no-misused-promises": "off"
   },
   settings: {
     react: {
